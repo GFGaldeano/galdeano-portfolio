@@ -4,32 +4,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Building, Code, Database, User } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../lib/translations';
 
 export default function SolarSystem() {
   const [selectedExperience, setSelectedExperience] = useState(null);
-  const [language, setLanguage] = useState('es');
-
-  const aboutContent = {
-    es: {
-      title: "ACERCA DE MÍ",
-      description: "Ingeniero en Sistemas con más de 15 años en desarrollo de software, inteligencia artificial y soluciones SaaS escalables. Fundador de Dragon Pyramid, empresa especializada en automatización, análisis de datos y transformación digital. Combino visión técnica, liderazgo estratégico y mentalidad orientada a resultados para crear productos que escalan globalmente. Apasionado por la tecnología como motor de crecimiento empresarial y mejora continua en la experiencia del usuario. Actualmente busco proyectos y colaboraciones internacionales donde la tecnología sea un verdadero motor de cambio, impulsando innovación y resultados medibles."
-    },
-    en: {
-      title: "ABOUT ME",
-      description: "Systems Engineer with over 15 years in software development, artificial intelligence and scalable SaaS solutions. Founder of Dragon Pyramid, a company specialized in automation, data analysis and digital transformation. I combine technical vision, strategic leadership and results-oriented mindset to create products that scale globally. Passionate about technology as a driver of business growth and continuous improvement in user experience. Currently seeking international projects and collaborations where technology is a true engine of change, driving innovation and measurable results."
-    }
-  };
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const experiences = [
     {
       id: 'eduassistant',
       name: 'Eduassistant',
       role: 'Python Backend Developer | RAG & AI Systems',
-      period: 'abril de 2026 - Presente',
+      period: language === 'es' ? 'abril de 2026 - Presente' : 'April 2026 - Present',
       color: '#EC4899',
       icon: <Code className="w-6 h-6" />,
-      description: 'Desarrollo de RAG-LIA, una API orientada a inteligencia artificial conversacional, diseñada para brindar acompañamiento y contención a estudiantes con riesgo de deserción académica.',
-      achievements: [
+      description: language === 'es' 
+        ? 'Desarrollo de RAG-LIA, una API orientada a inteligencia artificial conversacional, diseñada para brindar acompañamiento y contención a estudiantes con riesgo de deserción académica.'
+        : 'Development of RAG-LIA, an API oriented to conversational artificial intelligence, designed to provide support and containment to students at risk of academic dropout.',
+      achievements: language === 'es' ? [
         'Desarrollo de la arquitectura backend con FastAPI',
         'Configuración del entorno con Docker',
         'Implementación del endpoint de salud y estructura inicial de la API',
@@ -38,22 +32,38 @@ export default function SolarSystem() {
         'Implementación de servicio de generación de embeddings',
         'Pruebas funcionales con proveedores de modelos para IA',
         'Validación técnica del flujo para integración con Laravel'
+      ] : [
+        'Backend architecture development with FastAPI',
+        'Environment configuration with Docker',
+        'Health endpoint implementation and initial API structure',
+        'PostgreSQL integration with pgvector extension',
+        'Model creation and initial migrations with SQLAlchemy and Alembic',
+        'Embedding generation service implementation',
+        'Functional testing with AI model providers',
+        'Technical flow validation for Laravel integration'
       ],
       technologies: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Docker', 'SQLAlchemy', 'Alembic']
     },
     {
       id: 'dragon',
       name: 'Dragon Pyramid',
-      role: 'Fundador & CEO',
-      period: '2020 - Presente',
+      role: language === 'es' ? 'Fundador & CEO' : 'Founder & CEO',
+      period: '2020 - Presente / Present',
       color: '#4F46E5',
       icon: <Building className="w-6 h-6" />,
-      description: 'Empresa especializada en soluciones de Inteligencia Artificial y Tecnologías de la Información. Lidero el desarrollo de productos SaaS escalables y sistemas automatizados.',
-      achievements: [
+      description: language === 'es'
+        ? 'Empresa especializada en soluciones de Inteligencia Artificial y Tecnologías de la Información. Lidero el desarrollo de productos SaaS escalables y sistemas automatizados.'
+        : 'Company specialized in Artificial Intelligence and Information Technology solutions. I lead the development of scalable SaaS products and automated systems.',
+      achievements: language === 'es' ? [
         'Desarrollo de GYM MASTER, SaaS multi-tenant para gestión de gimnasios',
         'Implementación de módulos de IA generativa y analítica de datos',
         'Liderazgo de equipos multidisciplinarios en metodología ágil',
         'Participación en programas de aceleración como NAVES Argentina'
+      ] : [
+        'Development of GYM MASTER, multi-tenant SaaS for gym management',
+        'Implementation of generative AI and data analytics modules',
+        'Leadership of multidisciplinary teams in agile methodology',
+        'Participation in acceleration programs like NAVES Argentina'
       ],
       technologies: ['Next.js', 'Supabase', 'Docker', 'AI/ML', 'PostgreSQL']
     },
@@ -64,50 +74,69 @@ export default function SolarSystem() {
       period: '2025',
       color: '#10B981',
       icon: <Code className="w-6 h-6" />,
-      description: 'Desarrollo de sistema de Facturación y Logística como Progressive Web App (PWA) con operación offline y sincronización automática.',
-      achievements: [
+      description: language === 'es'
+        ? 'Desarrollo de sistema de Facturación y Logística como Progressive Web App (PWA) con operación offline y sincronización automática.'
+        : 'Development of Billing and Logistics system as Progressive Web App (PWA) with offline operation and automatic synchronization.',
+      achievements: language === 'es' ? [
         'Implementación de soporte offline con IndexedDB',
         'Desarrollo de app instalable para cualquier dispositivo',
         'Integración con servicios de backend mediante Supabase',
         'Mejora de experiencia del usuario y disponibilidad del sistema'
+      ] : [
+        'Offline support implementation with IndexedDB',
+        'Installable app development for any device',
+        'Backend services integration via Supabase',
+        'User experience and system availability improvement'
       ],
       technologies: ['Next.js 14', 'Supabase', 'TailwindCSS', 'TypeScript']
     },
     {
       id: 'legislature',
-      name: 'Honorable Legislatura de Tucumán',
+      name: language === 'es' ? 'Honorable Legislatura de Tucumán' : 'Honorable Legislature of Tucumán',
       role: 'ISI - DBA - PROGRAMADOR - PROJECT LIDER',
       period: '2010 - 2020',
       color: '#F59E0B',
       icon: <Database className="w-6 h-6" />,
-      description: 'Liderazgo del área de informática y desarrollo de sistemas administrativos integrales para procesos gubernamentales.',
-      achievements: [
+      description: language === 'es'
+        ? 'Liderazgo del área de informática y desarrollo de sistemas administrativos integrales para procesos gubernamentales.'
+        : 'Leadership of the IT area and development of comprehensive administrative systems for government processes.',
+      achievements: language === 'es' ? [
         'Diseño y desarrollo de sistemas de gestión de legajos y expedientes',
         'Implementación de módulos de compras y procesos impositivos',
         'Administración de bases de datos PostgreSQL, SQL Server y MySQL',
         'Liderazgo de equipos multidisciplinarios bajo metodología Scrum'
+      ] : [
+        'Design and development of file and records management systems',
+        'Implementation of purchasing and tax process modules',
+        'PostgreSQL, SQL Server and MySQL database administration',
+        'Leadership of multidisciplinary teams under Scrum methodology'
       ],
       technologies: ['PHP', 'PostgreSQL', 'JavaScript', 'Visual FoxPro']
     },
     {
       id: 'creative',
-      name: 'Editor de Audio y Video - Diseño Gráfico',
+      name: language === 'es' ? 'Editor de Audio y Video - Diseño Gráfico' : 'Audio & Video Editor - Graphic Design',
       role: 'Freelance',
-      period: '2017 - Presente',
+      period: language === 'es' ? '2017 - Presente' : '2017 - Present',
       color: '#8B5CF6',
       icon: <User className="w-6 h-6" />,
-      description: 'Servicios profesionales de edición de audio, video y diseño gráfico para diversos clientes y proyectos.',
-      achievements: [
+      description: language === 'es'
+        ? 'Servicios profesionales de edición de audio, video y diseño gráfico para diversos clientes y proyectos.'
+        : 'Professional audio, video editing and graphic design services for various clients and projects.',
+      achievements: language === 'es' ? [
         'Edición de contenido multimedia para eventos y producciones',
         'Diseño de identidad visual y material gráfico',
         'Producción de contenido para redes sociales y marketing',
         'Colaboración en proyectos de comunicación institucional'
+      ] : [
+        'Multimedia content editing for events and productions',
+        'Visual identity and graphic material design',
+        'Content production for social media and marketing',
+        'Collaboration on institutional communication projects'
       ],
       technologies: ['Adobe Premiere', 'After Effects', 'Photoshop', 'Illustrator', 'Audition']
     }
   ];
-
-  const currentAbout = aboutContent[language];
 
   return (
     <section id="acerca" className="min-h-screen py-20 bg-gradient-to-b from-black to-gray-900/50">
@@ -122,41 +151,18 @@ export default function SolarSystem() {
         >
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-4xl font-bold text-white">{currentAbout.title}</h2>
-              <div className="flex gap-2">
-                <button 
-                  onClick={() => setLanguage('es')}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    language === 'es' ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-gray-300'
-                  }`}
-                >
-                  ES
-                </button>
-                <button 
-                  onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    language === 'en' ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-gray-300'
-                  }`}
-                >
-                  EN
-                </button>
-              </div>
+              <h2 className="text-4xl font-bold text-white">{t.about.title}</h2>
             </div>
             
-            {/* Content with Image */}
             <div className="grid md:grid-cols-3 gap-8 items-center">
-              {/* Text Content */}
               <div className="md:col-span-2">
-                <p className="text-gray-300 text-lg leading-relaxed">{currentAbout.description}</p>
+                <p className="text-gray-300 text-lg leading-relaxed">{t.about.description}</p>
               </div>
               
-              {/* Profile Image */}
               <div className="md:col-span-1 flex justify-center md:justify-end">
                 <div className="relative group">
-                  {/* Glow Effect */}
                   <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
                   
-                  {/* Image Container */}
                   <div className="relative overflow-hidden rounded-2xl border border-gray-700">
                     <motion.img
                       src="/images/about-profile.png"
@@ -169,11 +175,9 @@ export default function SolarSystem() {
                       loading="lazy"
                     />
                     
-                    {/* Overlay on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
                   </div>
                   
-                  {/* Decorative Elements */}
                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-cyan-500 rounded-full animate-pulse"></div>
                   <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                 </div>
@@ -190,11 +194,10 @@ export default function SolarSystem() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          MI SISTEMA SOLAR PROFESIONAL
+          {t.about.experienceTitle}
         </motion.h2>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 to-purple-500 hidden md:block"></div>
           
           <div className="space-y-12">
@@ -209,10 +212,8 @@ export default function SolarSystem() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Timeline dot */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-gray-900 z-10 hidden md:block"></div>
                 
-                {/* Experience card */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <div 
                     className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border cursor-pointer hover:border-cyan-500/50 transition-all"
@@ -237,7 +238,6 @@ export default function SolarSystem() {
                   </div>
                 </div>
                 
-                {/* Empty space for timeline */}
                 <div className="w-full md:w-2/12 hidden md:block"></div>
               </motion.div>
             ))}
@@ -281,7 +281,7 @@ export default function SolarSystem() {
 
                 <p className="text-gray-300 mb-6">{selectedExperience.description}</p>
 
-                <h4 className="text-lg font-semibold text-white mb-3">Logros Clave:</h4>
+                <h4 className="text-lg font-semibold text-white mb-3">{t.experience.keyAchievements}:</h4>
                 <ul className="space-y-2 mb-6">
                   {selectedExperience.achievements.map((achievement, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -291,7 +291,7 @@ export default function SolarSystem() {
                   ))}
                 </ul>
 
-                <h4 className="text-lg font-semibold text-white mb-3">Tecnologías:</h4>
+                <h4 className="text-lg font-semibold text-white mb-3">{t.experience.technologies}:</h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedExperience.technologies.map((tech, idx) => (
                     <span 

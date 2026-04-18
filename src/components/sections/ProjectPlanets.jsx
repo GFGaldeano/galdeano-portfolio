@@ -1,17 +1,26 @@
+// src/components/sections/ProjectPlanets.jsx
 'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../lib/translations';
 
 export default function ProjectPlanets() {
-  // Declarar projects antes de usarlo
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
   const projects = [
     {
       id: 'gym-master',
       name: 'GYM MASTER SaaS',
       category: 'saas',
       color: 'from-indigo-500 to-purple-600',
-      description: 'Plataforma SaaS multi-tenant para gestión de gimnasios con módulos de análisis y automatización impulsados por IA',
+      description: language === 'es' 
+        ? 'Plataforma SaaS multi-tenant para gestión de gimnasios con módulos de análisis y automatización impulsados por IA'
+        : 'Multi-tenant SaaS platform for gym management with AI-powered analytics and automation modules',
       technologies: ['Next.js 14', 'Supabase', 'PostgreSQL', 'Docker', 'AI/ML'],
       images: [
         'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop',
@@ -25,10 +34,12 @@ export default function ProjectPlanets() {
     },
     {
       id: 'rag-lia',
-      name: 'RAG-LIA Asistente Académico',
+      name: 'RAG-LIA Academic Assistant',
       category: 'ai',
       color: 'from-pink-500 to-rose-600',
-      description: 'Asistente conversacional con IA para apoyo académico y retención estudiantil',
+      description: language === 'es'
+        ? 'Asistente conversacional con IA para apoyo académico y retención estudiantil'
+        : 'AI-powered conversational assistant for academic support and student retention',
       technologies: ['FastAPI', 'pgvector', 'OpenAI', 'Docker'],
       images: [
         'https://images.unsplash.com/photo-1677442135722-5f11d4d4c2d8?w=400&h=300&fit=crop'
@@ -41,10 +52,12 @@ export default function ProjectPlanets() {
     },
     {
       id: 'ecommerce',
-      name: 'Plataforma E-Commerce',
+      name: 'E-Commerce Platform',
       category: 'ecommerce',
       color: 'from-emerald-500 to-teal-600',
-      description: 'Plataforma de comercio electrónico automatizada con inventario en tiempo real',
+      description: language === 'es'
+        ? 'Plataforma de comercio electrónico automatizada con inventario en tiempo real'
+        : 'Automated e-commerce platform with real-time inventory management',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       images: [
         'https://images.unsplash.com/photo-1551836022-d5d88e0aef3a?w=400&h=300&fit=crop'
@@ -57,17 +70,28 @@ export default function ProjectPlanets() {
     }
   ];
 
-  // Ahora podemos usar projects[0] sin problemas
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const handleProjectSelect = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
   };
 
+  const getMetricLabel = (key) => {
+    const labels = {
+      clients: t.clients,
+      users: t.users,
+      revenue: t.revenue,
+      institutions: t.institutions,
+      students: t.students,
+      accuracy: t.accuracy,
+      stores: t.stores,
+      orders: t.orders,
+      uptime: t.uptime
+    };
+    return labels[key] || key;
+  };
+
   return (
-    <section className="min-h-screen py-20 bg-gradient-to-b from-black to-gray-900/50" id="proyectos">
+    <section id="proyectos" className="min-h-screen py-20 bg-gradient-to-b from-black to-gray-900/50">
       <div className="container mx-auto px-4">
         <motion.h2 
           className="text-4xl font-bold text-center mb-12 text-white"
@@ -76,7 +100,7 @@ export default function ProjectPlanets() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          PROYECTOS PLANETARIOS
+          {t.title}
         </motion.h2>
         
         {/* Project Grid */}
@@ -151,7 +175,7 @@ export default function ProjectPlanets() {
                 </p>
                 
                 <div className="mb-6">
-                  <h4 className="text-cyan-400 font-semibold mb-2">TECNOLOGÍAS:</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-2">{t.technologies}:</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech, index) => (
                       <span 
@@ -169,27 +193,17 @@ export default function ProjectPlanets() {
                   {Object.entries(selectedProject.metrics).map(([key, value]) => (
                     <div key={key} className="text-center bg-gray-800/50 rounded-lg p-3">
                       <div className="text-2xl font-bold text-cyan-400">{value}</div>
-                      <div className="text-sm text-gray-400 capitalize">
-                        {key === 'clients' ? 'Clientes' : 
-                         key === 'users' ? 'Usuarios' : 
-                         key === 'revenue' ? 'Ingresos' : 
-                         key === 'institutions' ? 'Instituciones' : 
-                         key === 'students' ? 'Estudiantes' : 
-                         key === 'accuracy' ? 'Precisión' : 
-                         key === 'stores' ? 'Tiendas' : 
-                         key === 'orders' ? 'Pedidos' : 
-                         key === 'uptime' ? 'Disponibilidad' : key}
-                      </div>
+                      <div className="text-sm text-gray-400">{getMetricLabel(key)}</div>
                     </div>
                   ))}
                 </div>
                 
                 <div className="flex gap-3">
                   <button className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition-colors">
-                    LIVE DEMO
+                    {t.liveDemo}
                   </button>
                   <button className="bg-gray-700 hover:bg-gray-600 px-6 py-2 rounded-lg transition-colors">
-                    CÓDIGO FUENTE
+                    {t.sourceCode}
                   </button>
                 </div>
               </div>

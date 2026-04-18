@@ -1,22 +1,27 @@
+// src/components/layout/Header.jsx
 'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../lib/translations';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   const navItems = [
-    { name: 'Inicio', onClick: scrollToTop },
-    { name: 'Acerca', href: '#acerca' },
-    { name: 'Proyectos', href: '#proyectos' },
-    { name: 'Habilidades', href: '#habilidades' },
-    { name: 'Contacto', href: '#contacto' }
+    { name: t.nav.inicio, href: '#inicio' },
+    { name: t.nav.acerca, href: '#acerca' },
+    { name: t.nav.proyectos, href: '#proyectos' },
+    { name: t.nav.habilidades, href: '#habilidades' },
+    { name: t.nav.contacto, href: '#contacto' }
   ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
@@ -24,7 +29,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div 
-            className="flex items-center"
+            className="flex items-center cursor-pointer"
+            onClick={scrollToTop}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -56,19 +62,46 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-gray-300"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          {/* Language Toggle & Mobile Menu */}
+          <div className="flex items-center gap-4">
+            {/* Language Toggle */}
+            <div className="hidden md:flex bg-gray-800/50 rounded-full p-1">
+              <button 
+                onClick={() => toggleLanguage('es')}
+                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  language === 'es' 
+                    ? 'bg-cyan-600 text-white' 
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                🇪🇸 ES
+              </button>
+              <button 
+                onClick={() => toggleLanguage('en')}
+                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  language === 'en' 
+                    ? 'bg-cyan-600 text-white' 
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                🇺🇸 EN
+              </button>
+            </div>
+
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden text-gray-300"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -92,6 +125,30 @@ export default function Header() {
                 </li>
               ))}
             </ul>
+            
+            {/* Mobile Language Toggle */}
+            <div className="flex justify-center gap-2 pb-4">
+              <button 
+                onClick={() => toggleLanguage('es')}
+                className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                  language === 'es' 
+                    ? 'bg-cyan-600 text-white' 
+                    : 'bg-gray-700 text-gray-300'
+                }`}
+              >
+                🇪🇸 ES
+              </button>
+              <button 
+                onClick={() => toggleLanguage('en')}
+                className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                  language === 'en' 
+                    ? 'bg-cyan-600 text-white' 
+                    : 'bg-gray-700 text-gray-300'
+                }`}
+              >
+                🇺🇸 EN
+              </button>
+            </div>
           </motion.div>
         )}
       </div>

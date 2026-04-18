@@ -3,12 +3,15 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronUp, Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { ChevronUp, Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../lib/translations';
 
 export default function SpaceFooter() {
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language].footer;
 
-  // Show button when page is scrolled down
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -32,7 +35,6 @@ export default function SpaceFooter() {
   return (
     <footer className="bg-gradient-to-t from-gray-900 to-black border-t border-gray-800 pt-16 pb-8">
       <div className="container mx-auto px-4">
-        {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo & Brand */}
           <div className="space-y-4">
@@ -42,9 +44,7 @@ export default function SpaceFooter() {
               </div>
               <span className="text-2xl font-bold text-white">Galdeano.dev</span>
             </div>
-            <p className="text-gray-400">
-              Construyendo el futuro con código, IA y visión espacial.
-            </p>
+            <p className="text-gray-400">{t.description}</p>
             <div className="flex space-x-4">
               <a href="https://github.com/GFGaldeano" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Github size={20} />
@@ -60,22 +60,17 @@ export default function SpaceFooter() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">NAVEGACIÓN</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t.navigation}</h3>
             <ul className="space-y-2">
               {[
-                { name: 'Inicio', href: '#inicio' },
-                { name: 'Acerca', href: '#acerca' },
-                { name: 'Proyectos', href: '#proyectos' },
-                { name: 'Habilidades', href: '#habilidades' },
-                { name: 'Contacto', href: '#contacto' }
+                { name: translations[language].nav.inicio, href: '#inicio' },
+                { name: translations[language].nav.acerca, href: '#acerca' },
+                { name: translations[language].nav.proyectos, href: '#proyectos' },
+                { name: translations[language].nav.habilidades, href: '#habilidades' },
+                { name: translations[language].nav.contacto, href: '#contacto' }
               ].map((item) => (
                 <li key={item.name}>
-                  <a 
-                    href={item.href} 
-                    className="text-gray-400 hover:text-cyan-400 transition-colors"
-                  >
-                    {item.name}
-                  </a>
+                  <a href={item.href} className="text-gray-400 hover:text-cyan-400 transition-colors">{item.name}</a>
                 </li>
               ))}
             </ul>
@@ -83,21 +78,16 @@ export default function SpaceFooter() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">RECURSOS</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t.resources}</h3>
             <ul className="space-y-2">
               {[
-                'Documentación',
-                'Especificaciones Técnicas',
-                'Proyectos Open Source',
-                'Blog Técnico'
-              ].map((item) => (
-                <li key={item}>
-                  <a 
-                    href="#" 
-                    className="text-gray-400 hover:text-cyan-400 transition-colors"
-                  >
-                    {item}
-                  </a>
+                t.documentation,
+                t.specs,
+                t.openSource,
+                t.blog
+              ].map((item, index) => (
+                <li key={index}>
+                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">{item}</a>
                 </li>
               ))}
             </ul>
@@ -105,10 +95,8 @@ export default function SpaceFooter() {
 
           {/* Newsletter Signup */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">BOLETÍN ESPACIAL</h3>
-            <p className="text-gray-400 mb-4">
-              Suscríbete para recibir actualizaciones sobre proyectos y artículos técnicos.
-            </p>
+            <h3 className="text-lg font-semibold text-white mb-4">{t.newsletter}</h3>
+            <p className="text-gray-400 mb-4">{t.newsletterText}</p>
             <div className="flex">
               <input
                 type="email"
@@ -116,7 +104,7 @@ export default function SpaceFooter() {
                 className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white text-sm"
               />
               <button className="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-r-lg text-sm transition-colors">
-                OK
+                {t.subscribe}
               </button>
             </div>
           </div>
@@ -126,26 +114,19 @@ export default function SpaceFooter() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-500 text-sm mb-4 md:mb-0">
-              <p>© {new Date().getFullYear()} Gustavo Galdeano. Todos los derechos reservados.</p>
-              <p className="mt-1">Diseñado con ❤️ y código en Argentina</p>
+              <p>© {new Date().getFullYear()} Gustavo Galdeano. {t.rights}</p>
+              <p className="mt-1">{t.designed}</p>
             </div>
             
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
-                Política de Privacidad
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
-                Términos de Uso
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
-                Cookies
-              </a>
+              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">{t.privacy}</a>
+              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">{t.terms}</a>
+              <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">{t.cookies}</a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Back to Top Button */}
       {isVisible && (
         <motion.button
           onClick={scrollToTop}

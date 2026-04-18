@@ -2,41 +2,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../lib/translations';
 
 export default function HeroSection() {
-  const [language, setLanguage] = useState('es');
-
-  const content = {
-    es: {
-      greeting: "HOLA, SOY",
-      name: "GUSTAVO GALDEANO",
-      title: "FULL STACK ENGINEER | AI ARCHITECT",
-      subtitle: "Fundador @ Dragon Pyramid",
-      cta: "EXPLORAR MI UNIVERSO",
-      cv: "Ver CV",
-      github: "GitHub",
-      linkedin: "LinkedIn"
-    },
-    en: {
-      greeting: "HELLO, I'M",
-      name: "GUSTAVO GALDEANO",
-      title: "FULL STACK ENGINEER | AI ARCHITECT",
-      subtitle: "Founder @ Dragon Pyramid",
-      cta: "EXPLORE MY UNIVERSE",
-      cv: "View CV",
-      github: "GitHub",
-      linkedin: "LinkedIn"
-    }
-  };
-
-  const currentContent = content[language];
+  const { language } = useLanguage();
+  const t = translations[language].hero;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Generar estrellas aleatorias
   const generateStars = (count) => {
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
@@ -55,10 +31,8 @@ export default function HeroSection() {
     <section id="inicio" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
       {/* Starfield Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Deep Space Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black"></div>
         
-        {/* Stars Container */}
         <div className="absolute inset-0">
           {stars.map((star) => (
             <div
@@ -77,12 +51,10 @@ export default function HeroSection() {
           ))}
         </div>
 
-        {/* Nebula Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
 
-        {/* Shooting Stars */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="shooting-star"></div>
           <div className="shooting-star" style={{animationDelay: '7s'}}></div>
@@ -99,7 +71,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {currentContent.greeting}
+            {t.greeting}
           </motion.h1>
           
           <motion.h2
@@ -108,7 +80,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            {currentContent.name}
+            {t.name}
           </motion.h2>
           
           <motion.p 
@@ -117,7 +89,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            {currentContent.title}
+            {t.title}
           </motion.p>
           
           <motion.p 
@@ -126,7 +98,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            {currentContent.subtitle}
+            {t.subtitle}
           </motion.p>
           
           <motion.div 
@@ -139,7 +111,7 @@ export default function HeroSection() {
               onClick={() => document.getElementById('acerca')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
             >
-              {currentContent.cta}
+              {t.cta}
             </button>
             
             <div className="flex gap-3">
@@ -147,7 +119,7 @@ export default function HeroSection() {
                 href="#" 
                 className="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors"
               >
-                {currentContent.cv}
+                {t.cv}
               </a>
               <a 
                 href="https://github.com/GFGaldeano" 
@@ -155,39 +127,8 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors"
               >
-                {currentContent.github}
+                {t.github}
               </a>
-            </div>
-          </motion.div>
-          
-          {/* Language Toggle */}
-          <motion.div 
-            className="flex justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-          >
-            <div className="bg-gray-800/50 rounded-full p-1 flex">
-              <button 
-                onClick={() => setLanguage('es')}
-                className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                  language === 'es' 
-                    ? 'bg-cyan-600 text-white' 
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                🇪🇸 ES
-              </button>
-              <button 
-                onClick={() => setLanguage('en')}
-                className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                  language === 'en' 
-                    ? 'bg-cyan-600 text-white' 
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                🇺🇸 EN
-              </button>
             </div>
           </motion.div>
         </div>
@@ -201,7 +142,7 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 1 }}
       >
         <div className="flex flex-col items-center text-gray-400">
-          <span className="text-sm mb-2">SCROLL DOWN</span>
+          <span className="text-sm mb-2">{t.scrollDown}</span>
           <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
             <motion.div 
               className="w-1 h-3 bg-cyan-500 rounded-full mt-2"
