@@ -1,22 +1,8 @@
+// src/components/sections/HeroSection.jsx
 'use client';
 
-import { Canvas } from '@react-three/fiber';
-import { Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { useState, Suspense } from 'react';
-
-function AnimatedStars() {
-  return (
-    <Stars 
-      radius={100} 
-      depth={50} 
-      count={5000} 
-      factor={4} 
-      saturation={0} 
-      fade 
-    />
-  );
-}
+import { useState } from 'react';
 
 export default function HeroSection() {
   const [language, setLanguage] = useState('es');
@@ -46,17 +32,62 @@ export default function HeroSection() {
 
   const currentContent = content[language];
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Generar estrellas aleatorias
+  const generateStars = (count) => {
+    return Array.from({ length: count }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      size: `${Math.random() * 3 + 1}px`,
+      delay: `${Math.random() * 5}s`,
+      duration: `${Math.random() * 3 + 2}s`,
+      opacity: Math.random() * 0.7 + 0.3
+    }));
+  };
+
+  const stars = generateStars(200);
+
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <Canvas>
-          <Suspense fallback={null}>
-            <AnimatedStars />
-            <ambientLight intensity={0.2} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-          </Suspense>
-        </Canvas>
+    <section id="inicio" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Starfield Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Deep Space Gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black"></div>
+        
+        {/* Stars Container */}
+        <div className="absolute inset-0">
+          {stars.map((star) => (
+            <div
+              key={star.id}
+              className="absolute rounded-full bg-white animate-twinkle"
+              style={{
+                top: star.top,
+                left: star.left,
+                width: star.size,
+                height: star.size,
+                opacity: star.opacity,
+                animationDelay: star.delay,
+                animationDuration: star.duration,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Nebula Effects */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
+
+        {/* Shooting Stars */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="shooting-star"></div>
+          <div className="shooting-star" style={{animationDelay: '7s'}}></div>
+          <div className="shooting-star" style={{animationDelay: '14s'}}></div>
+        </div>
       </div>
       
       {/* Content Overlay */}
@@ -104,7 +135,10 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
           >
-            <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+            <button 
+              onClick={() => document.getElementById('acerca')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+            >
               {currentContent.cta}
             </button>
             

@@ -3,12 +3,44 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Building, Users, Code, Database } from 'lucide-react';
+import { Building, Code, Database, User } from 'lucide-react';
 
 export default function SolarSystem() {
   const [selectedExperience, setSelectedExperience] = useState(null);
+  const [language, setLanguage] = useState('es');
+
+  const aboutContent = {
+    es: {
+      title: "ACERCA DE MÍ",
+      description: "Ingeniero en Sistemas con más de 15 años en desarrollo de software, inteligencia artificial y soluciones SaaS escalables. Fundador de Dragon Pyramid, empresa especializada en automatización, análisis de datos y transformación digital. Combino visión técnica, liderazgo estratégico y mentalidad orientada a resultados para crear productos que escalan globalmente. Apasionado por la tecnología como motor de crecimiento empresarial y mejora continua en la experiencia del usuario. Actualmente busco proyectos y colaboraciones internacionales donde la tecnología sea un verdadero motor de cambio, impulsando innovación y resultados medibles."
+    },
+    en: {
+      title: "ABOUT ME",
+      description: "Systems Engineer with over 15 years in software development, artificial intelligence and scalable SaaS solutions. Founder of Dragon Pyramid, a company specialized in automation, data analysis and digital transformation. I combine technical vision, strategic leadership and results-oriented mindset to create products that scale globally. Passionate about technology as a driver of business growth and continuous improvement in user experience. Currently seeking international projects and collaborations where technology is a true engine of change, driving innovation and measurable results."
+    }
+  };
 
   const experiences = [
+    {
+      id: 'eduassistant',
+      name: 'Eduassistant',
+      role: 'Python Backend Developer | RAG & AI Systems',
+      period: 'abril de 2026 - Presente',
+      color: '#EC4899',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Desarrollo de RAG-LIA, una API orientada a inteligencia artificial conversacional, diseñada para brindar acompañamiento y contención a estudiantes con riesgo de deserción académica.',
+      achievements: [
+        'Desarrollo de la arquitectura backend con FastAPI',
+        'Configuración del entorno con Docker',
+        'Implementación del endpoint de salud y estructura inicial de la API',
+        'Integración de PostgreSQL con la extensión pgvector',
+        'Creación de modelos y migraciones iniciales con SQLAlchemy y Alembic',
+        'Implementación de servicio de generación de embeddings',
+        'Pruebas funcionales con proveedores de modelos para IA',
+        'Validación técnica del flujo para integración con Laravel'
+      ],
+      technologies: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Docker', 'SQLAlchemy', 'Alembic']
+    },
     {
       id: 'dragon',
       name: 'Dragon Pyramid',
@@ -44,7 +76,7 @@ export default function SolarSystem() {
     {
       id: 'legislature',
       name: 'Honorable Legislatura de Tucumán',
-      role: 'Director de Informática',
+      role: 'ISI - DBA - PROGRAMADOR - PROJECT LIDER',
       period: '2010 - 2020',
       color: '#F59E0B',
       icon: <Database className="w-6 h-6" />,
@@ -56,12 +88,101 @@ export default function SolarSystem() {
         'Liderazgo de equipos multidisciplinarios bajo metodología Scrum'
       ],
       technologies: ['PHP', 'PostgreSQL', 'JavaScript', 'Visual FoxPro']
+    },
+    {
+      id: 'creative',
+      name: 'Editor de Audio y Video - Diseño Gráfico',
+      role: 'Freelance',
+      period: '2017 - Presente',
+      color: '#8B5CF6',
+      icon: <User className="w-6 h-6" />,
+      description: 'Servicios profesionales de edición de audio, video y diseño gráfico para diversos clientes y proyectos.',
+      achievements: [
+        'Edición de contenido multimedia para eventos y producciones',
+        'Diseño de identidad visual y material gráfico',
+        'Producción de contenido para redes sociales y marketing',
+        'Colaboración en proyectos de comunicación institucional'
+      ],
+      technologies: ['Adobe Premiere', 'After Effects', 'Photoshop', 'Illustrator', 'Audition']
     }
   ];
 
+  const currentAbout = aboutContent[language];
+
   return (
-    <section className="min-h-screen py-20 bg-gradient-to-b from-black to-gray-900/50">
+    <section id="acerca" className="min-h-screen py-20 bg-gradient-to-b from-black to-gray-900/50">
       <div className="container mx-auto px-4">
+        {/* About Section */}
+        <motion.div 
+          className="mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-4xl font-bold text-white">{currentAbout.title}</h2>
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => setLanguage('es')}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    language === 'es' ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-gray-300'
+                  }`}
+                >
+                  ES
+                </button>
+                <button 
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    language === 'en' ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-gray-300'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+            
+            {/* Content with Image */}
+            <div className="grid md:grid-cols-3 gap-8 items-center">
+              {/* Text Content */}
+              <div className="md:col-span-2">
+                <p className="text-gray-300 text-lg leading-relaxed">{currentAbout.description}</p>
+              </div>
+              
+              {/* Profile Image */}
+              <div className="md:col-span-1 flex justify-center md:justify-end">
+                <div className="relative group">
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                  
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden rounded-2xl border border-gray-700">
+                    <motion.img
+                      src="/images/about-profile.png"
+                      alt="Gustavo Galdeano - Profile"
+                      className="w-full h-auto max-w-[280px] max-h-[360px] object-cover transform group-hover:scale-105 transition duration-500"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      loading="lazy"
+                    />
+                    
+                    {/* Overlay on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                  </div>
+                  
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-cyan-500 rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Experience Timeline */}
         <motion.h2 
           className="text-4xl font-bold text-center mb-12 text-white"
           initial={{ opacity: 0, y: -20 }}
@@ -72,7 +193,6 @@ export default function SolarSystem() {
           MI SISTEMA SOLAR PROFESIONAL
         </motion.h2>
 
-        {/* Experience Timeline */}
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 to-purple-500 hidden md:block"></div>
@@ -130,7 +250,6 @@ export default function SolarSystem() {
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           >
             <div className="bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">

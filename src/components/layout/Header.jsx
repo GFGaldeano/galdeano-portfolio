@@ -6,8 +6,12 @@ import { motion } from 'framer-motion';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
   const navItems = [
-    { name: 'Inicio', href: '#inicio' },
+    { name: 'Inicio', onClick: scrollToTop },
     { name: 'Acerca', href: '#acerca' },
     { name: 'Proyectos', href: '#proyectos' },
     { name: 'Habilidades', href: '#habilidades' },
