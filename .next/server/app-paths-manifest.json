@@ -1,7 +1,3 @@
 {
-  "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/api/messages/route": "app/api/messages/route.js",
-  "/api/messages/[id]/route": "app/api/messages/[id]/route.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js"
+  "/page": "app/page.js"
 }

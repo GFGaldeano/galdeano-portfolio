@@ -135,6 +135,62 @@ export default function SolarSystem() {
         'Collaboration on institutional communication projects'
       ],
       technologies: ['Adobe Premiere', 'After Effects', 'Photoshop', 'Illustrator', 'Audition']
+    },
+    {
+      id: 'rentas',
+      name: language === 'es'
+        ? 'Dirección General de Rentas Provincias de Tucumán'
+        : 'General Directorate of Revenue of Tucumán Province',
+      role: language === 'es' ? 'Pasante' : 'Intern',
+      period: language === 'es'
+        ? '2005 - 2007'
+        : '2005 - 2007',
+      color: '#06B6D4',
+      icon: <Database className="w-6 h-6" />,
+      description: language === 'es'
+        ? 'Desarrollo y mantenimiento de software para la gestión tributaria, asegurando eficiencia y precisión en los procesos fiscales.'
+        : 'Development and maintenance of software for tax management, ensuring efficiency and accuracy in fiscal processes.',
+      achievements: language === 'es' ? [
+        'Desarrollo y mantenimiento de software de gestión tributaria con Visual FoxPro, PostgreSQL, HTML y PHP',
+        'Control de calidad y testing de aplicaciones para garantizar el cumplimiento de estándares y la estabilidad del sistema',
+        'Auditoría de bases de datos para verificar la integridad, consistencia y seguridad de la información crítica',
+        'Soporte a procesos fiscales mediante soluciones tecnológicas orientadas a la eficiencia operativa'
+      ] : [
+        'Development and maintenance of tax management software using Visual FoxPro, PostgreSQL, HTML and PHP',
+        'Quality control and application testing to ensure standards compliance and system stability',
+        'Database auditing to verify the integrity, consistency and security of critical information',
+        'Support for fiscal processes through technology solutions focused on operational efficiency'
+      ],
+      technologies: ['Visual FoxPro', 'PostgreSQL', 'HTML', 'PHP']
+    },
+    {
+      id: 'utn',
+      name: language === 'es'
+        ? 'Universidad Tecnológica Nacional'
+        : 'National Technological University',
+      role: language === 'es'
+        ? 'Profesor auxiliar de Diseño de Interfaz Gráfica'
+        : 'Assistant Professor of Graphic Interface Design',
+      period: language === 'es'
+        ? '2005 - 2006'
+        : '2005 - 2006',
+      color: '#14B8A6',
+      icon: <User className="w-6 h-6" />,
+      description: language === 'es'
+        ? 'Profesor auxiliar de la cátedra de Diseño de Interfaz Gráfica en la Universidad Tecnológica Nacional - Facultad Regional Tucumán.'
+        : 'Assistant professor in the Graphic Interface Design course at the National Technological University - Tucumán Regional Faculty.',
+      achievements: language === 'es' ? [
+        'Acompañamiento académico en la cátedra de Diseño de Interfaz Gráfica',
+        'Apoyo en la formación de estudiantes en conceptos de interfaz y diseño visual',
+        'Participación docente avalada por el profesor Ricardo Adra, fundador del grupo Proymes',
+        'Colaboración en actividades de enseñanza y seguimiento de trabajos prácticos'
+      ] : [
+        'Academic support in the Graphic Interface Design course',
+        'Assistance in training students in interface concepts and visual design',
+        'Teaching role endorsed by Professor Ricardo Adra, founder of the Proymes group',
+        'Collaboration in teaching activities and follow-up of practical assignments'
+      ],
+      technologies: ['UI Design', 'Graphic Interface Design', 'Teaching', 'Visual Design']
     }
   ];
 
