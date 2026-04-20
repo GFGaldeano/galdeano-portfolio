@@ -10,7 +10,6 @@ import {
   CheckCircle,
   Circle,
   Search,
-  Filter,
   RefreshCw,
   LogOut,
   Inbox,
@@ -30,7 +29,50 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [stats, setStats] = useState({ total: 0, new: 0, read: 0 });
+  const [visitStats, setVisitStats] = useState({
+    visitors: 0,
+    last_visit: null,
+  });
+
   const router = useRouter();
+
+  // Cargar mensajes
+  const loadMessages = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/messages?filter=${filter}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessages(data.messages);
+        setStats({
+          total: data.pagination.total,
+          new: data.messages.filter((m) => !m.is_read).length,
+          read: data.messages.filter((m) => m.is_read).length
+        });
+      }
+    } catch (error) {
+      console.error('Error cargando mensajes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Cargar visitas
+  const loadVisitStats = async () => {
+    try {
+      const response = await fetch('/api/visits');
+      if (!response.ok) return;
+
+      const data = await response.json();
+      setVisitStats({
+        visitors: data.visitors || 0,
+        last_visit: data.last_visit || null,
+      });
+    } catch (error) {
+      console.error('Error cargando visitas:', error);
+    }
+  };
 
   // Verificar sesión al cargar
   useEffect(() => {
@@ -41,35 +83,20 @@ export default function AdminDashboard() {
           router.push('/admin/login');
           return;
         }
-        loadMessages();
+
+        await Promise.all([loadMessages(), loadVisitStats()]);
       } catch (error) {
         router.push('/admin/login');
       }
     };
+
     checkSession();
   }, []);
 
-  // Cargar mensajes
-  const loadMessages = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/messages?filter=${filter}`);
-      const data = await response.json();
-      
-      if (response.ok) {
-        setMessages(data.messages);
-        setStats({
-          total: data.pagination.total,
-          new: data.messages.filter(m => !m.is_read).length,
-          read: data.messages.filter(m => m.is_read).length
-        });
-      }
-    } catch (error) {
-      console.error('Error cargando mensajes:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Recargar cuando cambia filtro
+  useEffect(() => {
+    loadMessages();
+  }, [filter]);
 
   // Marcar como leído
   const markAsRead = async (id, is_read) => {
@@ -116,10 +143,11 @@ export default function AdminDashboard() {
   };
 
   // Filtrar mensajes por búsqueda
-  const filteredMessages = messages.filter(msg =>
-    msg.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    msg.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    msg.subject?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredMessages = messages.filter(
+    (msg) =>
+      msg.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      msg.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      msg.subject?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Formatear fecha
@@ -135,11 +163,20 @@ export default function AdminDashboard() {
     if (minutes < 60) return `Hace ${minutes}m`;
     if (hours < 24) return `Hace ${hours}h`;
     if (days < 7) return `Hace ${days}d`;
-    
+
     return date.toLocaleDateString('es-AR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric'
+    });
+  };
+
+  const formatLastVisit = (dateString) => {
+    if (!dateString) return 'Sin registros';
+
+    return new Date(dateString).toLocaleString('es-AR', {
+      dateStyle: 'short',
+      timeStyle: 'short',
     });
   };
 
@@ -169,10 +206,12 @@ export default function AdminDashboard() {
                 <p className="text-xs text-gray-400">galdeano.dev</p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <button
-                onClick={loadMessages}
+                onClick={async () => {
+                  await Promise.all([loadMessages(), loadVisitStats()]);
+                }}
                 className="p-2 text-gray-400 hover:text-cyan-400 transition-colors"
                 title="Recargar"
               >
@@ -191,6 +230,33 @@ export default function AdminDashboard() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        {/* Visitas */}
+        <div className="mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-r from-cyan-600/20 to-blue-600/20 border border-cyan-500/30 rounded-2xl p-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-cyan-500/20">
+                <Eye className="w-8 h-8 text-cyan-400" />
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                  Cantidad de visitas
+                </p>
+                <h2 className="text-3xl font-bold text-white">
+                  {visitStats.visitors}
+                </h2>
+                <p className="text-sm text-gray-400 mt-1">
+                  Última visita: {formatLastVisit(visitStats.last_visit)}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
         {/* Estadísticas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <motion.div
