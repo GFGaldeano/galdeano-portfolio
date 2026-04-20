@@ -14,39 +14,72 @@ export default function SolarSystem() {
 
   const experiences = [
     {
+      id: 'luui',
+      name: 'LUUI',
+      role: 'Technical Team Leader - Back Office',
+      location: language === 'es' ? 'Pichincha - Ecuador' : 'Pichincha - Ecuador',
+      period: language === 'es' ? '2026 - Presente' : '2026 - Present',
+      color: '#22C55E',
+      icon: <Building className="w-6 h-6" />,
+      description: language === 'es'
+        ? 'Actualmente me desempeño como Team Leader del frente de Back Office en LUUI, una plataforma HealthTech orientada al cuidado integral de adultos mayores.'
+        : 'I currently serve as Team Leader for the Back Office front at LUUI, a HealthTech platform focused on comprehensive care for older adults.',
+      achievements: language === 'es' ? [
+        'Diseño y coordinación del panel administrativo web del Back Office',
+        'Colaboración en la definición de la arquitectura funcional y su integración con el ecosistema general del producto',
+        'Trabajo sobre módulos de monitoreo operativo, validación de profesionales, seguimiento de atenciones, gestión administrativa y soporte a procesos de pagos y reportes',
+        'Participación en decisiones técnicas transversales sobre la estructura base del proyecto, estándares de desarrollo y organización del flujo de trabajo',
+        'Revisión técnica de entregables y coordinación entre frontend, backend y base de datos',
+        'Análisis de infraestructura y consolidación del modelo de datos que soporta la operación de la plataforma'
+      ] : [
+        'Design and coordination of the Back Office web admin panel',
+        'Collaboration in defining the functional architecture and its integration with the overall product ecosystem',
+        'Work on modules related to operational monitoring, professional validation, appointment follow-up, administrative management, and support for payments and reporting processes',
+        'Participation in cross-functional technical decisions related to the project foundation, development standards, and workflow organization',
+        'Technical review of deliverables and coordination across frontend, backend, and database teams',
+        'Infrastructure analysis and consolidation of the data model supporting platform operations'
+      ],
+      technologies: [
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'APIs',
+        'Authentication',
+        'Data Modeling',
+        'Technical Documentation',
+        'Team Leadership'
+      ]
+    },
+    {
       id: 'eduassistant',
       name: 'Eduassistant',
       role: 'Python Backend Developer | RAG & AI Systems',
       location: language === 'es' ? 'Santiago de Chile - Chile' : 'Santiago de Chile - Chile',
-      period: language === 'es' ? 'abril de 2026 - Presente' : 'April 2026 - Present',
+      period: language === 'es' ? '2026 - Presente' : '2026 - Present',
       color: '#EC4899',
       icon: <Code className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Desarrollo de RAG-LIA, una API orientada a inteligencia artificial conversacional, diseñada para brindar acompañamiento y contención a estudiantes con riesgo de deserción académica.'
-          : 'Development of RAG-LIA, an API oriented to conversational artificial intelligence, designed to provide support and containment to students at risk of academic dropout.',
-      achievements:
-        language === 'es'
-          ? [
-              'Desarrollo de la arquitectura backend con FastAPI',
-              'Configuración del entorno con Docker',
-              'Implementación del endpoint de salud y estructura inicial de la API',
-              'Integración de PostgreSQL con la extensión pgvector',
-              'Creación de modelos y migraciones iniciales con SQLAlchemy y Alembic',
-              'Implementación de servicio de generación de embeddings',
-              'Pruebas funcionales con proveedores de modelos para IA',
-              'Validación técnica del flujo para integración con Laravel'
-            ]
-          : [
-              'Backend architecture development with FastAPI',
-              'Environment configuration with Docker',
-              'Health endpoint implementation and initial API structure',
-              'PostgreSQL integration with pgvector extension',
-              'Model creation and initial migrations with SQLAlchemy and Alembic',
-              'Embedding generation service implementation',
-              'Functional testing with AI model providers',
-              'Technical flow validation for Laravel integration'
-            ],
+      description: language === 'es'
+        ? 'Desarrollo de RAG-LIA, una API orientada a inteligencia artificial conversacional, diseñada para brindar acompañamiento y contención a estudiantes con riesgo de deserción académica.'
+        : 'Development of RAG-LIA, an API oriented to conversational artificial intelligence, designed to provide support and containment to students at risk of academic dropout.',
+      achievements: language === 'es' ? [
+        'Desarrollo de la arquitectura backend con FastAPI',
+        'Configuración del entorno con Docker',
+        'Implementación del endpoint de salud y estructura inicial de la API',
+        'Integración de PostgreSQL con la extensión pgvector',
+        'Creación de modelos y migraciones iniciales con SQLAlchemy y Alembic',
+        'Implementación de servicio de generación de embeddings',
+        'Pruebas funcionales con proveedores de modelos para IA',
+        'Validación técnica del flujo para integración con Laravel'
+      ] : [
+        'Backend architecture development with FastAPI',
+        'Environment configuration with Docker',
+        'Health endpoint implementation and initial API structure',
+        'PostgreSQL integration with pgvector extension',
+        'Model creation and initial migrations with SQLAlchemy and Alembic',
+        'Embedding generation service implementation',
+        'Functional testing with AI model providers',
+        'Technical flow validation for Laravel integration'
+      ],
       technologies: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Docker', 'SQLAlchemy', 'Alembic']
     },
     {
@@ -54,27 +87,23 @@ export default function SolarSystem() {
       name: 'Dragon Pyramid',
       role: language === 'es' ? 'Fundador & CEO' : 'Founder & CEO',
       location: language === 'es' ? 'Tucumán - Argentina' : 'Tucumán - Argentina',
-      period: '2020 - Presente / Present',
+      period: language === 'es' ? '2020 - Presente' : '2020 - Present',
       color: '#4F46E5',
       icon: <Building className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Empresa especializada en soluciones de Inteligencia Artificial y Tecnologías de la Información. Lidero el desarrollo de productos SaaS escalables y sistemas automatizados.'
-          : 'Company specialized in Artificial Intelligence and Information Technology solutions. I lead the development of scalable SaaS products and automated systems.',
-      achievements:
-        language === 'es'
-          ? [
-              'Desarrollo de GYM MASTER, SaaS multi-tenant para gestión de gimnasios',
-              'Implementación de módulos de IA generativa y analítica de datos',
-              'Liderazgo de equipos multidisciplinarios en metodología ágil',
-              'Participación en programas de aceleración como NAVES Argentina'
-            ]
-          : [
-              'Development of GYM MASTER, multi-tenant SaaS for gym management',
-              'Implementation of generative AI and data analytics modules',
-              'Leadership of multidisciplinary teams in agile methodology',
-              'Participation in acceleration programs like NAVES Argentina'
-            ],
+      description: language === 'es'
+        ? 'Empresa especializada en soluciones de Inteligencia Artificial y Tecnologías de la Información. Lidero el desarrollo de productos SaaS escalables y sistemas automatizados.'
+        : 'Company specialized in Artificial Intelligence and Information Technology solutions. I lead the development of scalable SaaS products and automated systems.',
+      achievements: language === 'es' ? [
+        'Desarrollo de GYM MASTER, SaaS multi-tenant para gestión de gimnasios',
+        'Implementación de módulos de IA generativa y analítica de datos',
+        'Liderazgo de equipos multidisciplinarios en metodología ágil',
+        'Participación en programas de aceleración como NAVES Argentina'
+      ] : [
+        'Development of GYM MASTER, multi-tenant SaaS for gym management',
+        'Implementation of generative AI and data analytics modules',
+        'Leadership of multidisciplinary teams in agile methodology',
+        'Participation in acceleration programs like NAVES Argentina'
+      ],
       technologies: ['Next.js', 'Supabase', 'Docker', 'AI/ML', 'PostgreSQL']
     },
     {
@@ -85,24 +114,20 @@ export default function SolarSystem() {
       period: '2025',
       color: '#10B981',
       icon: <Code className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Desarrollo de sistema de Facturación y Logística como Progressive Web App (PWA) con operación offline y sincronización automática.'
-          : 'Development of Billing and Logistics system as Progressive Web App (PWA) with offline operation and automatic synchronization.',
-      achievements:
-        language === 'es'
-          ? [
-              'Implementación de soporte offline con IndexedDB',
-              'Desarrollo de app instalable para cualquier dispositivo',
-              'Integración con servicios de backend mediante Supabase',
-              'Mejora de experiencia del usuario y disponibilidad del sistema'
-            ]
-          : [
-              'Offline support implementation with IndexedDB',
-              'Installable app development for any device',
-              'Backend services integration via Supabase',
-              'User experience and system availability improvement'
-            ],
+      description: language === 'es'
+        ? 'Desarrollo de sistema de Facturación y Logística como Progressive Web App (PWA) con operación offline y sincronización automática.'
+        : 'Development of Billing and Logistics system as Progressive Web App (PWA) with offline operation and automatic synchronization.',
+      achievements: language === 'es' ? [
+        'Implementación de soporte offline con IndexedDB',
+        'Desarrollo de app instalable para cualquier dispositivo',
+        'Integración con servicios de backend mediante Supabase',
+        'Mejora de experiencia del usuario y disponibilidad del sistema'
+      ] : [
+        'Offline support implementation with IndexedDB',
+        'Installable app development for any device',
+        'Backend services integration via Supabase',
+        'User experience and system availability improvement'
+      ],
       technologies: ['Next.js 14', 'Supabase', 'TailwindCSS', 'TypeScript']
     },
     {
@@ -113,24 +138,20 @@ export default function SolarSystem() {
       period: '2010 - 2020',
       color: '#F59E0B',
       icon: <Database className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Liderazgo del área de informática y desarrollo de sistemas administrativos integrales para procesos gubernamentales.'
-          : 'Leadership of the IT area and development of comprehensive administrative systems for government processes.',
-      achievements:
-        language === 'es'
-          ? [
-              'Diseño y desarrollo de sistemas de gestión de legajos y expedientes',
-              'Implementación de módulos de compras y procesos impositivos',
-              'Administración de bases de datos PostgreSQL, SQL Server y MySQL',
-              'Liderazgo de equipos multidisciplinarios bajo metodología Scrum'
-            ]
-          : [
-              'Design and development of file and records management systems',
-              'Implementation of purchasing and tax process modules',
-              'PostgreSQL, SQL Server and MySQL database administration',
-              'Leadership of multidisciplinary teams under Scrum methodology'
-            ],
+      description: language === 'es'
+        ? 'Liderazgo del área de informática y desarrollo de sistemas administrativos integrales para procesos gubernamentales.'
+        : 'Leadership of the IT area and development of comprehensive administrative systems for government processes.',
+      achievements: language === 'es' ? [
+        'Diseño y desarrollo de sistemas de gestión de legajos y expedientes',
+        'Implementación de módulos de compras y procesos impositivos',
+        'Administración de bases de datos PostgreSQL, SQL Server y MySQL',
+        'Liderazgo de equipos multidisciplinarios bajo metodología Scrum'
+      ] : [
+        'Design and development of file and records management systems',
+        'Implementation of purchasing and tax process modules',
+        'PostgreSQL, SQL Server and MySQL database administration',
+        'Leadership of multidisciplinary teams under Scrum methodology'
+      ],
       technologies: ['PHP', 'PostgreSQL', 'JavaScript', 'Visual FoxPro']
     },
     {
@@ -141,86 +162,72 @@ export default function SolarSystem() {
       period: language === 'es' ? '2017 - Presente' : '2017 - Present',
       color: '#8B5CF6',
       icon: <User className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Servicios profesionales de edición de audio, video y diseño gráfico para diversos clientes y proyectos.'
-          : 'Professional audio, video editing and graphic design services for various clients and projects.',
-      achievements:
-        language === 'es'
-          ? [
-              'Edición de contenido multimedia para eventos y producciones',
-              'Diseño de identidad visual y material gráfico',
-              'Producción de contenido para redes sociales y marketing',
-              'Colaboración en proyectos de comunicación institucional'
-            ]
-          : [
-              'Multimedia content editing for events and productions',
-              'Visual identity and graphic material design',
-              'Content production for social media and marketing',
-              'Collaboration on institutional communication projects'
-            ],
+      description: language === 'es'
+        ? 'Servicios profesionales de edición de audio, video y diseño gráfico para diversos clientes y proyectos.'
+        : 'Professional audio, video editing and graphic design services for various clients and projects.',
+      achievements: language === 'es' ? [
+        'Edición de contenido multimedia para eventos y producciones',
+        'Diseño de identidad visual y material gráfico',
+        'Producción de contenido para redes sociales y marketing',
+        'Colaboración en proyectos de comunicación institucional'
+      ] : [
+        'Multimedia content editing for events and productions',
+        'Visual identity and graphic material design',
+        'Content production for social media and marketing',
+        'Collaboration on institutional communication projects'
+      ],
       technologies: ['Adobe Premiere', 'After Effects', 'Photoshop', 'Illustrator', 'Audition']
     },
     {
       id: 'rentas',
-      name:
-        language === 'es'
-          ? 'Dirección General de Rentas Provincias de Tucumán'
-          : 'General Directorate of Revenue of Tucumán Province',
+      name: language === 'es'
+        ? 'Dirección General de Rentas Provincias de Tucumán'
+        : 'General Directorate of Revenue of Tucumán Province',
       role: language === 'es' ? 'Pasante' : 'Intern',
       location: language === 'es' ? 'Tucumán - Argentina' : 'Tucumán - Argentina',
       period: language === 'es' ? '2005 - 2007' : '2005 - 2007',
       color: '#06B6D4',
       icon: <Database className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Desarrollo y mantenimiento de software para la gestión tributaria, asegurando eficiencia y precisión en los procesos fiscales.'
-          : 'Development and maintenance of software for tax management, ensuring efficiency and accuracy in fiscal processes.',
-      achievements:
-        language === 'es'
-          ? [
-              'Desarrollo y mantenimiento de software de gestión tributaria con Visual FoxPro, PostgreSQL, HTML y PHP',
-              'Control de calidad y testing de aplicaciones para garantizar el cumplimiento de estándares y la estabilidad del sistema',
-              'Auditoría de bases de datos para verificar la integridad, consistencia y seguridad de la información crítica',
-              'Soporte a procesos fiscales mediante soluciones tecnológicas orientadas a la eficiencia operativa'
-            ]
-          : [
-              'Development and maintenance of tax management software using Visual FoxPro, PostgreSQL, HTML and PHP',
-              'Quality control and application testing to ensure standards compliance and system stability',
-              'Database auditing to verify the integrity, consistency and security of critical information',
-              'Support for fiscal processes through technology solutions focused on operational efficiency'
-            ],
+      description: language === 'es'
+        ? 'Desarrollo y mantenimiento de software para la gestión tributaria, asegurando eficiencia y precisión en los procesos fiscales.'
+        : 'Development and maintenance of software for tax management, ensuring efficiency and accuracy in fiscal processes.',
+      achievements: language === 'es' ? [
+        'Desarrollo y mantenimiento de software de gestión tributaria con Visual FoxPro, PostgreSQL, HTML y PHP',
+        'Control de calidad y testing de aplicaciones para garantizar el cumplimiento de estándares y la estabilidad del sistema',
+        'Auditoría de bases de datos para verificar la integridad, consistencia y seguridad de la información crítica',
+        'Soporte a procesos fiscales mediante soluciones tecnológicas orientadas a la eficiencia operativa'
+      ] : [
+        'Development and maintenance of tax management software using Visual FoxPro, PostgreSQL, HTML and PHP',
+        'Quality control and application testing to ensure standards compliance and system stability',
+        'Database auditing to verify the integrity, consistency and security of critical information',
+        'Support for fiscal processes through technology solutions focused on operational efficiency'
+      ],
       technologies: ['Visual FoxPro', 'PostgreSQL', 'HTML', 'PHP']
     },
     {
       id: 'utn',
       name: language === 'es' ? 'Universidad Tecnológica Nacional' : 'National Technological University',
-      role:
-        language === 'es'
-          ? 'Profesor auxiliar de Diseño de Interfaz Gráfica'
-          : 'Assistant Professor of Graphic Interface Design',
+      role: language === 'es'
+        ? 'Profesor auxiliar de Diseño de Interfaz Gráfica'
+        : 'Assistant Professor of Graphic Interface Design',
       location: language === 'es' ? 'Tucumán - Argentina' : 'Tucumán - Argentina',
       period: language === 'es' ? '2005 - 2006' : '2005 - 2006',
       color: '#14B8A6',
       icon: <User className="w-6 h-6" />,
-      description:
-        language === 'es'
-          ? 'Profesor auxiliar de la cátedra de Diseño de Interfaz Gráfica en la Universidad Tecnológica Nacional - Facultad Regional Tucumán.'
-          : 'Assistant professor in the Graphic Interface Design course at the National Technological University - Tucumán Regional Faculty.',
-      achievements:
-        language === 'es'
-          ? [
-              'Acompañamiento académico en la cátedra de Diseño de Interfaz Gráfica',
-              'Apoyo en la formación de estudiantes en conceptos de interfaz y diseño visual',
-              'Participación docente avalada por el profesor Ricardo Adra, fundador del grupo Proymes',
-              'Colaboración en actividades de enseñanza y seguimiento de trabajos prácticos'
-            ]
-          : [
-              'Academic support in the Graphic Interface Design course',
-              'Assistance in training students in interface concepts and visual design',
-              'Teaching role endorsed by Professor Ricardo Adra, founder of the Proymes group',
-              'Collaboration in teaching activities and follow-up of practical assignments'
-            ],
+      description: language === 'es'
+        ? 'Profesor auxiliar de la cátedra de Diseño de Interfaz Gráfica en la Universidad Tecnológica Nacional - Facultad Regional Tucumán.'
+        : 'Assistant professor in the Graphic Interface Design course at the National Technological University - Tucumán Regional Faculty.',
+      achievements: language === 'es' ? [
+        'Acompañamiento académico en la cátedra de Diseño de Interfaz Gráfica',
+        'Apoyo en la formación de estudiantes en conceptos de interfaz y diseño visual',
+        'Participación docente avalada por el profesor Ricardo Adra, fundador del grupo Proymes',
+        'Colaboración en actividades de enseñanza y seguimiento de trabajos prácticos'
+      ] : [
+        'Academic support in the Graphic Interface Design course',
+        'Assistance in training students in interface concepts and visual design',
+        'Teaching role endorsed by Professor Ricardo Adra, founder of the Proymes group',
+        'Collaboration in teaching activities and follow-up of practical assignments'
+      ],
       technologies: ['UI Design', 'Graphic Interface Design', 'Teaching', 'Visual Design']
     }
   ];
