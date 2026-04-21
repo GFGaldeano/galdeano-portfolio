@@ -1,9 +1,9 @@
+// src/components/layout/SpaceFooter.jsx
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronUp, Github, Linkedin } from 'lucide-react';
+import { ChevronUp, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../lib/translations';
 
@@ -14,7 +14,11 @@ export default function SpaceFooter() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      setIsVisible(window.pageYOffset > 300);
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
 
     window.addEventListener('scroll', toggleVisibility);
@@ -34,9 +38,9 @@ export default function SpaceFooter() {
   ];
 
   const resourceLinks = [
-    { name: t.documentation },
-    { name: t.specs },
-    { name: t.openSource },
+    { name: t.documentation, href: null },
+    { name: t.specs, href: null },
+    { name: t.openSource, href: null },
     {
       name: t.blog,
       href: '/blog',
@@ -49,6 +53,7 @@ export default function SpaceFooter() {
     <footer className="relative bg-gradient-to-b from-gray-950 to-black border-t border-cyan-500/10 mt-20">
       <div className="container mx-auto px-4 py-14">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Logo & Brand */}
           <div>
             <div className="mb-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg mb-4">
@@ -76,9 +81,17 @@ export default function SpaceFooter() {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
+
+              <a
+                href="mailto:gustavo.galdeano.dev@gmail.com"
+                className="p-3 rounded-xl bg-gray-900 border border-gray-800 hover:border-cyan-500/40 hover:text-cyan-400 transition-all text-gray-300"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
+          {/* Navigation Links */}
           <div>
             <h4 className="text-white font-semibold text-lg mb-4">{t.navigation}</h4>
             <ul className="space-y-3">
@@ -95,6 +108,7 @@ export default function SpaceFooter() {
             </ul>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h4 className="text-white font-semibold text-lg mb-4">{t.resources}</h4>
             <ul className="space-y-3">
@@ -117,6 +131,7 @@ export default function SpaceFooter() {
             </ul>
           </div>
 
+          {/* Newsletter Signup */}
           <div>
             <h4 className="text-white font-semibold text-lg mb-4">{t.newsletter}</h4>
             <p className="text-gray-400 leading-relaxed mb-4">{t.newsletterText}</p>
@@ -127,6 +142,7 @@ export default function SpaceFooter() {
           </div>
         </div>
 
+        {/* Legal & Credits */}
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <p className="text-gray-400 text-sm">
@@ -135,7 +151,7 @@ export default function SpaceFooter() {
             <p className="text-gray-500 text-sm mt-1">{t.designed}</p>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-gray-500">
+          <div className="flex items-center gap-4 text-sm text-gray-500 flex-wrap">
             <span>{t.privacy}</span>
             <span>{t.terms}</span>
             <span>{t.cookies}</span>
