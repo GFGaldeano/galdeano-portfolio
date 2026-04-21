@@ -1,1 +1,8 @@
-{}
+{
+  "components\\blog\\BlogMediaRenderer.jsx -> ./PdfCarousel": {
+    "id": "components\\blog\\BlogMediaRenderer.jsx -> ./PdfCarousel",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_blog_PdfCarousel_jsx.js"
+    ]
+  }
+}
