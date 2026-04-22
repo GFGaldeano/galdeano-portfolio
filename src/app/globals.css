@@ -102,3 +102,21 @@ body {
   background: linear-gradient(90deg, #06b6d4, transparent);
   transform: translateX(-100%);
 }
+
+.blog-content p {
+  margin: 0 0 1.25rem 0;
+}
+
+.blog-content ul {
+  margin: 0 0 1.25rem 1.5rem;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content br {
+  line-height: 1.8;
+}

@@ -1,19 +1,22 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, RefreshCcw } from 'lucide-react';
-import { useLanguage } from '../../../context/LanguageContext';
-import BlogMediaRenderer from '../../../components/blog/BlogMediaRenderer';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, RefreshCcw } from "lucide-react";
+import { useLanguage } from "../../../context/LanguageContext";
+import BlogMediaRenderer from "../../../components/blog/BlogMediaRenderer";
 
 function formatDate(dateString, language) {
-  return new Date(dateString).toLocaleDateString(language === 'es' ? 'es-AR' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  return new Date(dateString).toLocaleDateString(
+    language === "es" ? "es-AR" : "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
 }
 
 export default function BlogDetailPage() {
@@ -22,24 +25,24 @@ export default function BlogDetailPage() {
 
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const labels = {
     es: {
-      back: 'Volver al blog',
-      loading: 'Cargando publicación...',
-      retry: 'Reintentar',
-      publishedOn: 'Publicado el',
-      notFound: 'No se encontró la publicación solicitada.',
-      multimedia: 'Contenido multimedia',
+      back: "Volver al blog",
+      loading: "Cargando publicación...",
+      retry: "Reintentar",
+      publishedOn: "Publicado el",
+      notFound: "No se encontró la publicación solicitada.",
+      multimedia: "Contenido multimedia",
     },
     en: {
-      back: 'Back to blog',
-      loading: 'Loading post...',
-      retry: 'Retry',
-      publishedOn: 'Published on',
-      notFound: 'The requested post was not found.',
-      multimedia: 'Multimedia content',
+      back: "Back to blog",
+      loading: "Loading post...",
+      retry: "Retry",
+      publishedOn: "Published on",
+      notFound: "The requested post was not found.",
+      multimedia: "Multimedia content",
     },
   };
 
@@ -48,10 +51,10 @@ export default function BlogDetailPage() {
   const loadPost = async () => {
     try {
       setLoading(true);
-      setError('');
+      setError("");
 
       const response = await fetch(`/api/blog/posts/slug/${slug}`, {
-        cache: 'no-store',
+        cache: "no-store",
       });
 
       const data = await response.json();
@@ -122,15 +125,15 @@ export default function BlogDetailPage() {
                 {post.title}
               </h1>
 
-              <div className="prose prose-invert max-w-none prose-p:text-gray-300 prose-headings:text-white">
-                <p className="text-gray-300 text-lg leading-8 whitespace-pre-line">
-                  {post.content}
-                </p>
+              <div className="text-gray-300 text-lg leading-8 whitespace-pre-wrap break-words">
+                {post.content}
               </div>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-white">{t.multimedia}</h2>
+              <h2 className="text-2xl font-semibold text-white">
+                {t.multimedia}
+              </h2>
               <BlogMediaRenderer post={post} />
             </div>
           </motion.article>

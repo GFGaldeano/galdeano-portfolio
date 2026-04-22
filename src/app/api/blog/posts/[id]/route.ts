@@ -1,13 +1,13 @@
 // src/app/api/blog/posts/[id]/route.ts
-import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { requireAuth } from '../../../../../lib/auth';
-import { createSlug, isValidMediaType } from '../../../../../lib/blog';
-import { deleteFromCloudinary } from '../../../../../lib/cloudinary';
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { requireAuth } from "../../../../../lib/auth";
+import { createSlug, isValidMediaType } from "../../../../../lib/blog";
+import { deleteFromCloudinary } from "../../../../../lib/cloudinary";
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
 );
 
 async function generateUniqueSlug(title: string, currentId: string) {
@@ -17,9 +17,9 @@ async function generateUniqueSlug(title: string, currentId: string) {
 
   while (true) {
     const { data, error } = await supabase
-      .from('blog_posts')
-      .select('id')
-      .eq('slug', slug)
+      .from("blog_posts")
+      .select("id")
+      .eq("slug", slug)
       .maybeSingle();
 
     if (error) throw error;
@@ -33,38 +33,38 @@ async function generateUniqueSlug(title: string, currentId: string) {
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ) {
   const authError = await requireAuth();
   if (authError) return authError;
 
   try {
     const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('id', params.id)
+      .from("blog_posts")
+      .select("*")
+      .eq("id", params.id)
       .single();
 
     if (error) {
       return NextResponse.json(
-        { error: 'Post no encontrado' },
-        { status: 404 }
+        { error: "Post no encontrado" },
+        { status: 404 },
       );
     }
 
     return NextResponse.json({ post: data }, { status: 200 });
   } catch (error) {
-    console.error('Error en GET /api/blog/posts/[id]:', error);
+    console.error("Error en GET /api/blog/posts/[id]:", error);
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
-      { status: 500 }
+      { error: "Error interno del servidor" },
+      { status: 500 },
     );
   }
 }
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ) {
   const authError = await requireAuth();
   if (authError) return authError;
@@ -73,21 +73,21 @@ export async function PATCH(
     const body = await request.json();
 
     const { data: existingPost, error: fetchError } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('id', params.id)
+      .from("blog_posts")
+      .select("*")
+      .eq("id", params.id)
       .single();
 
     if (fetchError || !existingPost) {
       return NextResponse.json(
-        { error: 'Post no encontrado' },
-        { status: 404 }
+        { error: "Post no encontrado" },
+        { status: 404 },
       );
     }
 
     const updates: any = {};
 
-    if (typeof body.title === 'string' && body.title.trim()) {
+    if (typeof body.title === "string" && body.title.trim()) {
       updates.title = body.title.trim();
 
       if (updates.title !== existingPost.title) {
@@ -95,11 +95,11 @@ export async function PATCH(
       }
     }
 
-    if (typeof body.content === 'string' && body.content.trim()) {
+    if (typeof body.content === "string" && body.content.trim()) {
       updates.content = body.content.trim();
     }
 
-    if (typeof body.is_visible === 'boolean') {
+    if (typeof body.is_visible === "boolean") {
       updates.is_visible = body.is_visible;
     }
 
@@ -108,42 +108,42 @@ export async function PATCH(
 
       if (!isValidMediaType(mediaType)) {
         return NextResponse.json(
-          { error: 'Tipo de multimedia inválido' },
-          { status: 400 }
+          { error: "Tipo de multimedia inválido" },
+          { status: 400 },
         );
       }
 
       updates.media_type = mediaType;
     }
 
-    if (typeof body.media_url === 'string') {
+    if (typeof body.media_url === "string") {
       updates.media_url = body.media_url.trim();
     }
 
-    if (typeof body.media_public_id === 'string') {
+    if (typeof body.media_public_id === "string") {
       updates.media_public_id = body.media_public_id.trim();
     }
 
-    if (typeof body.media_resource_type === 'string') {
+    if (typeof body.media_resource_type === "string") {
       updates.media_resource_type = body.media_resource_type.trim();
     }
 
-    if (typeof body.thumbnail_url === 'string' || body.thumbnail_url === null) {
+    if (typeof body.thumbnail_url === "string" || body.thumbnail_url === null) {
       updates.thumbnail_url = body.thumbnail_url;
     }
 
     const { data, error } = await supabase
-      .from('blog_posts')
+      .from("blog_posts")
       .update(updates)
-      .eq('id', params.id)
-      .select('*')
+      .eq("id", params.id)
+      .select("*")
       .single();
 
     if (error) {
-      console.error('Error actualizando post:', error);
+      console.error("Error actualizando post:", error);
       return NextResponse.json(
-        { error: 'Error al actualizar el post' },
-        { status: 500 }
+        { error: "Error al actualizar el post" },
+        { status: 500 },
       );
     }
 
@@ -152,35 +152,35 @@ export async function PATCH(
         success: true,
         post: data,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
-    console.error('Error en PATCH /api/blog/posts/[id]:', error);
+    console.error("Error en PATCH /api/blog/posts/[id]:", error);
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
-      { status: 500 }
+      { error: "Error interno del servidor" },
+      { status: 500 },
     );
   }
 }
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ) {
   const authError = await requireAuth();
   if (authError) return authError;
 
   try {
     const { data: existingPost, error: fetchError } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('id', params.id)
+      .from("blog_posts")
+      .select("*")
+      .eq("id", params.id)
       .single();
 
     if (fetchError || !existingPost) {
       return NextResponse.json(
-        { error: 'Post no encontrado' },
-        { status: 404 }
+        { error: "Post no encontrado" },
+        { status: 404 },
       );
     }
 
@@ -188,35 +188,35 @@ export async function DELETE(
       try {
         await deleteFromCloudinary(
           existingPost.media_public_id,
-          existingPost.media_type
+          existingPost.media_type,
         );
       } catch (cloudinaryError) {
-        console.error('Error borrando asset de Cloudinary:', cloudinaryError);
+        console.error("Error borrando asset de Cloudinary:", cloudinaryError);
       }
     }
 
     const { error } = await supabase
-      .from('blog_posts')
+      .from("blog_posts")
       .delete()
-      .eq('id', params.id);
+      .eq("id", params.id);
 
     if (error) {
-      console.error('Error eliminando post:', error);
+      console.error("Error eliminando post:", error);
       return NextResponse.json(
-        { error: 'Error al eliminar el post' },
-        { status: 500 }
+        { error: "Error al eliminar el post" },
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { success: true, deletedId: params.id },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
-    console.error('Error en DELETE /api/blog/posts/[id]:', error);
+    console.error("Error en DELETE /api/blog/posts/[id]:", error);
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
-      { status: 500 }
+      { error: "Error interno del servidor" },
+      { status: 500 },
     );
   }
 }
