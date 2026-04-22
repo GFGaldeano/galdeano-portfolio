@@ -1,8 +1,8 @@
 {
   "/page": "app/page.js",
-  "/api/visits/route": "app/api/visits/route.js",
   "/blog/page": "app/blog/page.js",
-  "/api/blog/posts/route": "app/api/blog/posts/route.js",
   "/blog/[slug]/page": "app/blog/[slug]/page.js",
-  "/api/blog/posts/slug/[slug]/route": "app/api/blog/posts/slug/[slug]/route.js"
+  "/api/blog/posts/slug/[slug]/route": "app/api/blog/posts/slug/[slug]/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/[[...__metadata_id__]]/route": "app/sitemap.xml/[[...__metadata_id__]]/route.js"
 }
