@@ -1,8 +1,8 @@
-// File: E:\galdeano-portfolio\src\app\api\blog\posts\slug\[slug]\route.ts
-import * as entry from '../../../../../../../../src/app/api/blog/posts/slug/[slug]/route.js'
+// File: E:\galdeano-portfolio\src\app\api\blog\posts\route.ts
+import * as entry from '../../../../../../src/app/api/blog/posts/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../../../../src/app/api/blog/posts/slug/[slug]/route.js')
+type TEntry = typeof import('../../../../../../src/app/api/blog/posts/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
