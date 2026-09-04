@@ -15,8 +15,8 @@ export const translations = {
     hero: {
       greeting: "HOLA, SOY",
       name: "GUSTAVO GALDEANO",
-      title: "FULL STACK ENGINEER | AI ARCHITECT",
-      subtitle: "Fundador @ Dragon Pyramid",
+      title: "AI SDLC ENGINEER | AI ARCHITECT",
+      subtitle: "AI SDLC Engineer @ MINDATA | Fundador & CEO @ Dragon Pyramid",
       cta: "EXPLORAR MI UNIVERSO",
       cv: "Ver CV",
       github: "GitHub",
@@ -27,7 +27,7 @@ export const translations = {
     about: {
       title: "ACERCA DE MÍ",
       description:
-        "Ingeniero en Sistemas con más de 15 años en desarrollo de software, inteligencia artificial y soluciones SaaS escalables. Fundador de Dragon Pyramid, empresa especializada en automatización, análisis de datos y transformación digital. Combino visión técnica, liderazgo estratégico y mentalidad orientada a resultados para crear productos que escalan globalmente. Apasionado por la tecnología como motor de crecimiento empresarial y mejora continua en la experiencia del usuario. Actualmente busco proyectos y colaboraciones internacionales donde la tecnología sea un verdadero motor de cambio, impulsando innovación y resultados medibles.",
+        "Ingeniero en Sistemas con más de 20 años de experiencia en desarrollo de software, arquitectura, datos e inteligencia artificial. Actualmente trabajo como AI SDLC Engineer en MINDATA, impulsando la integración de Inteligencia Artificial Generativa dentro del ciclo de vida de desarrollo de software mediante metodologías AI-assisted SDLC, Context Engineering, agentes, métricas de productividad y calidad, Developer Experience y gobernanza. También soy Fundador & CEO de Dragon Pyramid, donde desarrollo productos SaaS, automatización y soluciones basadas en IA. Combino una sólida base Full Stack con visión de arquitectura, liderazgo técnico y un enfoque orientado a convertir la IA en una capacidad de ingeniería medible, reproducible y escalable.",
       experienceTitle: "MI SISTEMA SOLAR PROFESIONAL",
     },
 
@@ -41,7 +41,7 @@ export const translations = {
       yearsExp: "Años Exp.",
       technologies: "Tecnologías",
       projects: "Proyectos",
-      available: "Disponible",
+      available: "Colaboración",
       summary: "RESUMEN DE HABILIDADES",
     },
 
@@ -80,9 +80,12 @@ export const translations = {
         "✅ Mensaje enviado exitosamente! Recibirá respuesta en 24 horas.",
       contactInfo: "INFORMACIÓN DE CONTACTO",
       socialConnections: "CONEXIONES ESPACIALES",
-      available: "DISPONIBLE PARA PROYECTOS",
+      available: "ABIERTO A COLABORACIONES",
       availableText:
-        "Actualmente aceptando nuevos proyectos internacionales y colaboraciones en IA & SaaS.",
+        "Disponible para colaboraciones seleccionadas, iniciativas de IA y proyectos tecnológicos internacionales.",
+      profileRolePrimary: "AI SDLC Engineer @ MINDATA",
+      profileRoleSecondary: "Fundador & CEO @ Dragon Pyramid",
+      profileLocation: "Argentina · Trabajo remoto",
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "Email",
@@ -91,7 +94,7 @@ export const translations = {
 
     // Footer
     footer: {
-      description: "Construyendo el futuro con código, IA y visión espacial.",
+      description: "Construyendo el futuro con ingeniería de software, IA y sistemas agénticos.",
       navigation: "NAVEGACIÓN",
       resources: "RECURSOS",
       newsletter: "BOLETÍN ESPACIAL",
@@ -132,8 +135,8 @@ export const translations = {
     hero: {
       greeting: "HELLO, I'M",
       name: "GUSTAVO GALDEANO",
-      title: "FULL STACK ENGINEER | AI ARCHITECT",
-      subtitle: "Founder @ Dragon Pyramid",
+      title: "AI SDLC ENGINEER | AI ARCHITECT",
+      subtitle: "AI SDLC Engineer @ MINDATA | Founder & CEO @ Dragon Pyramid",
       cta: "EXPLORE MY UNIVERSE",
       cv: "View CV",
       github: "GitHub",
@@ -144,7 +147,7 @@ export const translations = {
     about: {
       title: "ABOUT ME",
       description:
-        "Systems Engineer with over 15 years in software development, artificial intelligence and scalable SaaS solutions. Founder of Dragon Pyramid, a company specialized in automation, data analysis and digital transformation. I combine technical vision, strategic leadership and results-oriented mindset to create products that scale globally. Passionate about technology as a driver of business growth and continuous improvement in user experience. Currently seeking international projects and collaborations where technology is a true engine of change, driving innovation and measurable results.",
+        "Systems Engineer with over 20 years of experience in software development, architecture, data and artificial intelligence. I currently work as an AI SDLC Engineer at MINDATA, driving the integration of Generative AI throughout the Software Development Life Cycle through AI-assisted SDLC methodologies, Context Engineering, agents, productivity and quality metrics, Developer Experience and governance. I am also Founder & CEO of Dragon Pyramid, where I build SaaS products, automation and AI-based solutions. I combine a strong Full Stack foundation with architecture, technical leadership and a focus on turning AI into a measurable, reproducible and scalable engineering capability.",
       experienceTitle: "MY PROFESSIONAL SOLAR SYSTEM",
     },
 
@@ -158,7 +161,7 @@ export const translations = {
       yearsExp: "Years Exp.",
       technologies: "Technologies",
       projects: "Projects",
-      available: "Available",
+      available: "Collaboration",
       summary: "SKILLS SUMMARY",
     },
 
@@ -197,9 +200,12 @@ export const translations = {
         "✅ Message sent successfully! You will receive a response within 24 hours.",
       contactInfo: "CONTACT INFORMATION",
       socialConnections: "SPACE CONNECTIONS",
-      available: "AVAILABLE FOR PROJECTS",
+      available: "OPEN TO COLLABORATIONS",
       availableText:
-        "Currently accepting new international projects and collaborations in AI & SaaS.",
+        "Open to selected collaborations, AI initiatives and international technology projects.",
+      profileRolePrimary: "AI SDLC Engineer @ MINDATA",
+      profileRoleSecondary: "Founder & CEO @ Dragon Pyramid",
+      profileLocation: "Argentina · Remote",
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "Email",
@@ -208,7 +214,7 @@ export const translations = {
 
     // Footer
     footer: {
-      description: "Building the future with code, AI and space vision.",
+      description: "Building the future with software engineering, AI and agentic systems.",
       navigation: "NAVIGATION",
       resources: "RESOURCES",
       newsletter: "SPACE NEWSLETTER",

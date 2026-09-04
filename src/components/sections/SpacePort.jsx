@@ -230,7 +230,10 @@ export default function SpacePort() {
                     Gustavo Galdeano
                   </h3>
                   <p className="text-cyan-300">
-                    CTO & Fundador @ Dragon Pyramid
+                    {t.profileRolePrimary}
+                  </p>
+                  <p className="text-purple-300 text-sm mt-1">
+                    {t.profileRoleSecondary}
                   </p>
                 </div>
               </div>
@@ -251,7 +254,7 @@ export default function SpacePort() {
                 <div className="flex items-center">
                   <MapPin className="text-cyan-400 mr-3" size={20} />
                   <span className="text-gray-300">
-                    Argentina (Remote Friendly)
+                    {t.profileLocation}
                   </span>
                 </div>
               </div>

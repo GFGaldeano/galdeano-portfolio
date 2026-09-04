@@ -32,11 +32,12 @@ export default function SkillsNebula() {
       icon: <Brain className="w-5 h-5" />,
       color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'RAG', level: 75, years: 1 },
-        { name: 'Vector DB', level: 70, years: 1 },
-        { name: 'OpenAI API', level: 80, years: 2 },
-        { name: 'FastAPI', level: 75, years: 2 },
-        { name: 'Data Analytics', level: 70, years: 3 }
+        { name: 'Generative AI', level: 90, years: 2 },
+        { name: 'AI-assisted SDLC', level: 90, years: 1 },
+        { name: 'Context Engineering', level: 88, years: 2 },
+        { name: 'AI Agents / Agentic Systems', level: 85, years: 1 },
+        { name: 'RAG & Vector Retrieval', level: 82, years: 1 },
+        { name: 'AI Governance', level: 85, years: 1 }
       ]
     },
     {
@@ -59,7 +60,7 @@ export default function SkillsNebula() {
     : skillCategories.filter(cat => cat.id === selectedCategory);
 
   const currentYear = new Date().getFullYear();
-  const yearsOfExperience = currentYear - 2000;
+  const yearsOfExperience = currentYear - 2005;
 
   return (
     <section id="habilidades" className="min-h-screen py-20 bg-gradient-to-b from-gray-900/50 to-black">
@@ -167,7 +168,7 @@ export default function SkillsNebula() {
               <div className="text-gray-400">{t.projects}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-green-400">24/7</div>
+              <div className="text-3xl font-bold text-green-400">GLOBAL</div>
               <div className="text-gray-400">{t.available}</div>
             </div>
           </div>
