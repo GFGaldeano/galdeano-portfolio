@@ -9,13 +9,23 @@ const siteUrl = getSiteUrl();
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Gustavo Galdeano | Portfolio & Technical Blog",
+    default: "Gustavo Galdeano | AI SDLC Engineer & AI Architect",
     template: "%s | Gustavo Galdeano",
   },
   description:
-    "Portfolio profesional y blog técnico sobre desarrollo Full Stack, arquitectura SaaS, inteligencia artificial aplicada y productos reales.",
+    "Portfolio profesional de Gustavo Galdeano, AI SDLC Engineer y AI Architect especializado en Generative AI, Context Engineering, sistemas agénticos, gobernanza de IA, Full Stack y arquitectura SaaS.",
   keywords: [
     "Gustavo Galdeano",
+    "AI SDLC Engineer",
+    "AI Architect",
+    "AI-assisted SDLC",
+    "Generative AI",
+    "Context Engineering",
+    "AI Agents",
+    "Agentic Systems",
+    "AI Governance",
+    "Developer Experience",
+    "Software Engineering",
     "Full Stack Developer",
     "Next.js",
     "TypeScript",
@@ -34,15 +44,15 @@ export const metadata = {
     locale: "es_AR",
     url: siteUrl,
     siteName: "Galdeano.dev",
-    title: "Gustavo Galdeano | Portfolio & Technical Blog",
+    title: "Gustavo Galdeano | AI SDLC Engineer & AI Architect",
     description:
-      "Portfolio profesional y blog técnico sobre desarrollo Full Stack, arquitectura SaaS, inteligencia artificial aplicada y productos reales.",
+      "AI SDLC Engineer y AI Architect especializado en Generative AI, Context Engineering, sistemas agénticos, gobernanza de IA, Full Stack y arquitectura SaaS.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gustavo Galdeano | Portfolio & Technical Blog",
+    title: "Gustavo Galdeano | AI SDLC Engineer & AI Architect",
     description:
-      "Portfolio profesional y blog técnico sobre desarrollo Full Stack, arquitectura SaaS, inteligencia artificial aplicada y productos reales.",
+      "AI SDLC Engineer y AI Architect especializado en Generative AI, Context Engineering, sistemas agénticos, gobernanza de IA, Full Stack y arquitectura SaaS.",
   },
 };
 
