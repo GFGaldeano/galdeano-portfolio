@@ -14,6 +14,57 @@ export default function SolarSystem() {
 
   const experiences = [
     {
+      id: 'mindata',
+      name: 'MINDATA',
+      role: 'AI SDLC Engineer',
+      location: language === 'es' ? 'España - En remoto' : 'Spain - Remote',
+      period: language === 'es' ? 'ago. 2026 - Presente' : 'Aug. 2026 - Present',
+      color: '#0EA5E9',
+      icon: <Code className="w-6 h-6" />,
+      description: language === 'es'
+        ? 'Actualmente trabajo como AI SDLC Engineer en MINDATA, impulsando la incorporación de Inteligencia Artificial Generativa dentro del ciclo de vida de desarrollo de software (SDLC), con foco en productividad, calidad, trazabilidad, adopción y mejora continua.'
+        : 'I currently work as an AI SDLC Engineer at MINDATA, driving the adoption of Generative Artificial Intelligence throughout the Software Development Life Cycle (SDLC), with a focus on productivity, quality, traceability, adoption, and continuous improvement.',
+      achievements: language === 'es' ? [
+        'Diseño y evolución de metodologías AI-assisted SDLC para análisis, desarrollo, testing, documentación y mantenimiento',
+        'Evaluación e integración de herramientas de IA generativa en flujos reales de ingeniería de software',
+        'Diseño de estrategias de Context Engineering, prompts, agentes, Skills, memoria y reutilización de conocimiento',
+        'Definición de KPIs de productividad, esfuerzo, calidad, adopción, costes y retorno, incluyendo contratos de métricas, fórmulas, fuentes, población y trazabilidad',
+        'Integración y análisis de señales procedentes de Jira, Worklogs, SonarQube, plataformas de IA y Analytics',
+        'Comparación de procesos asistidos y no asistidos por IA, preservando la comparabilidad y la calidad experimental',
+        'Evaluación de consumo de modelos, sesiones, tokens, costes y patrones de uso',
+        'Colaboración con equipos de Data & Analytics para automatizar métricas, dashboards y mecanismos de seguimiento',
+        'Definición de criterios de gobernanza, seguridad, calidad y uso responsable de IA dentro del SDLC',
+        'Creación de documentación técnica, guías operativas, manuales y material de transferencia de conocimiento',
+        'Acompañamiento a equipos técnicos en adopción, capacitación y buenas prácticas de ingeniería asistida por IA',
+        'Investigación continua de modelos, frameworks, agentes y arquitecturas de desarrollo agéntico'
+      ] : [
+        'Design and evolution of AI-assisted SDLC methodologies for analysis, development, testing, documentation, and maintenance',
+        'Evaluation and integration of generative AI tools into real software engineering workflows',
+        'Design of Context Engineering strategies, prompts, agents, Skills, memory, and knowledge reuse mechanisms',
+        'Definition of productivity, effort, quality, adoption, cost, and return KPIs, including metric contracts, formulas, sources, populations, and traceability',
+        'Integration and analysis of signals from Jira, Worklogs, SonarQube, AI platforms, and Analytics',
+        'Comparison of AI-assisted and non-AI-assisted processes while preserving comparability and experimental quality',
+        'Evaluation of model consumption, sessions, tokens, costs, and usage patterns',
+        'Collaboration with Data & Analytics teams to automate metrics, dashboards, and monitoring mechanisms',
+        'Definition of governance, security, quality, and responsible AI usage criteria throughout the SDLC',
+        'Creation of technical documentation, operational guides, manuals, and knowledge-transfer materials',
+        'Support for technical teams in adoption, training, and AI-assisted engineering best practices',
+        'Continuous research into models, frameworks, agents, and agentic software development architectures'
+      ],
+      technologies: [
+        'Generative AI',
+        'AI-assisted SDLC',
+        'Context Engineering',
+        'AI Agents',
+        'Jira',
+        'SonarQube',
+        'Data Analytics',
+        'KPI Design',
+        'DevEx',
+        'AI Governance'
+      ]
+    },
+    {
       id: 'luui',
       name: 'LUUI',
       role: 'Technical Team Leader - Back Office',
