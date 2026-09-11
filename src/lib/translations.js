@@ -16,7 +16,7 @@ export const translations = {
       greeting: "HOLA, SOY",
       name: "GUSTAVO GALDEANO",
       title: "AI SDLC ENGINEER | AI ARCHITECT",
-      subtitle: "AI SDLC Engineer @ MINDATA | Fundador & CEO @ Dragon Pyramid",
+      subtitle: "AI SDLC Engineer | Fundador & CEO @ Dragon Pyramid",
       cta: "EXPLORAR MI UNIVERSO",
       cv: "Ver CV",
       github: "GitHub",
@@ -27,7 +27,7 @@ export const translations = {
     about: {
       title: "ACERCA DE MÍ",
       description:
-        "Ingeniero en Sistemas con más de 20 años de experiencia en desarrollo de software, arquitectura, datos e inteligencia artificial. Actualmente trabajo como AI SDLC Engineer en MINDATA, impulsando la integración de Inteligencia Artificial Generativa dentro del ciclo de vida de desarrollo de software mediante metodologías AI-assisted SDLC, Context Engineering, agentes, métricas de productividad y calidad, Developer Experience y gobernanza. También soy Fundador & CEO de Dragon Pyramid, donde desarrollo productos SaaS, automatización y soluciones basadas en IA. Combino una sólida base Full Stack con visión de arquitectura, liderazgo técnico y un enfoque orientado a convertir la IA en una capacidad de ingeniería medible, reproducible y escalable.",
+        "Ingeniero en Sistemas con más de 20 años de experiencia en desarrollo de software, arquitectura, datos e inteligencia artificial. Actualmente trabajo como AI SDLC Engineer, impulsando la integración de Inteligencia Artificial Generativa dentro del ciclo de vida de desarrollo de software mediante metodologías AI-assisted SDLC, Context Engineering, agentes, métricas de productividad y calidad, Developer Experience y gobernanza. También soy Fundador & CEO de Dragon Pyramid, donde desarrollo productos SaaS, automatización y soluciones basadas en IA. Combino una sólida base Full Stack con visión de arquitectura, liderazgo técnico y un enfoque orientado a convertir la IA en una capacidad de ingeniería medible, reproducible y escalable.",
       experienceTitle: "MI SISTEMA SOLAR PROFESIONAL",
     },
 
@@ -83,7 +83,7 @@ export const translations = {
       available: "ABIERTO A COLABORACIONES",
       availableText:
         "Disponible para colaboraciones seleccionadas, iniciativas de IA y proyectos tecnológicos internacionales.",
-      profileRolePrimary: "AI SDLC Engineer @ MINDATA",
+      profileRolePrimary: "AI SDLC Engineer",
       profileRoleSecondary: "Fundador & CEO @ Dragon Pyramid",
       profileLocation: "Argentina · Trabajo remoto",
       github: "GitHub",
@@ -136,7 +136,7 @@ export const translations = {
       greeting: "HELLO, I'M",
       name: "GUSTAVO GALDEANO",
       title: "AI SDLC ENGINEER | AI ARCHITECT",
-      subtitle: "AI SDLC Engineer @ MINDATA | Founder & CEO @ Dragon Pyramid",
+      subtitle: "AI SDLC Engineer | Founder & CEO @ Dragon Pyramid",
       cta: "EXPLORE MY UNIVERSE",
       cv: "View CV",
       github: "GitHub",
@@ -147,7 +147,7 @@ export const translations = {
     about: {
       title: "ABOUT ME",
       description:
-        "Systems Engineer with over 20 years of experience in software development, architecture, data and artificial intelligence. I currently work as an AI SDLC Engineer at MINDATA, driving the integration of Generative AI throughout the Software Development Life Cycle through AI-assisted SDLC methodologies, Context Engineering, agents, productivity and quality metrics, Developer Experience and governance. I am also Founder & CEO of Dragon Pyramid, where I build SaaS products, automation and AI-based solutions. I combine a strong Full Stack foundation with architecture, technical leadership and a focus on turning AI into a measurable, reproducible and scalable engineering capability.",
+        "Systems Engineer with over 20 years of experience in software development, architecture, data and artificial intelligence. I currently work as an AI SDLC Engineer, driving the integration of Generative AI throughout the Software Development Life Cycle through AI-assisted SDLC methodologies, Context Engineering, agents, productivity and quality metrics, Developer Experience and governance. I am also Founder & CEO of Dragon Pyramid, where I build SaaS products, automation and AI-based solutions. I combine a strong Full Stack foundation with architecture, technical leadership and a focus on turning AI into a measurable, reproducible and scalable engineering capability.",
       experienceTitle: "MY PROFESSIONAL SOLAR SYSTEM",
     },
 
@@ -203,7 +203,7 @@ export const translations = {
       available: "OPEN TO COLLABORATIONS",
       availableText:
         "Open to selected collaborations, AI initiatives and international technology projects.",
-      profileRolePrimary: "AI SDLC Engineer @ MINDATA",
+      profileRolePrimary: "AI SDLC Engineer",
       profileRoleSecondary: "Founder & CEO @ Dragon Pyramid",
       profileLocation: "Argentina · Remote",
       github: "GitHub",
