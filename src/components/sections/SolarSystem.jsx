@@ -69,12 +69,12 @@ export default function SolarSystem() {
       name: 'LUUI',
       role: 'Technical Team Leader - Back Office',
       location: language === 'es' ? 'Pichincha - Ecuador' : 'Pichincha - Ecuador',
-      period: language === 'es' ? '2026 - Presente' : '2026 - Present',
+      period: '2026',
       color: '#22C55E',
       icon: <Building className="w-6 h-6" />,
       description: language === 'es'
-        ? 'Actualmente me desempeño como Team Leader del frente de Back Office en LUUI, una plataforma HealthTech orientada al cuidado integral de adultos mayores.'
-        : 'I currently serve as Team Leader for the Back Office front at LUUI, a HealthTech platform focused on comprehensive care for older adults.',
+        ? 'Me desempeñé como Team Leader del frente de Back Office en LUUI, una plataforma HealthTech orientada al cuidado integral de adultos mayores.'
+        : 'I served as Team Leader for the Back Office front at LUUI, a HealthTech platform focused on comprehensive care for older adults.',
       achievements: language === 'es' ? [
         'Diseño y coordinación del panel administrativo web del Back Office',
         'Colaboración en la definición de la arquitectura funcional y su integración con el ecosistema general del producto',
@@ -106,7 +106,7 @@ export default function SolarSystem() {
       name: 'Eduassistant',
       role: 'Python Backend Developer | RAG & AI Systems',
       location: language === 'es' ? 'Santiago de Chile - Chile' : 'Santiago de Chile - Chile',
-      period: language === 'es' ? '2026 - Presente' : '2026 - Present',
+      period: '2026',
       color: '#EC4899',
       icon: <Code className="w-6 h-6" />,
       description: language === 'es'
