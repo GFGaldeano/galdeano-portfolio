@@ -7,7 +7,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../lib/translations';
 
 export default function ProjectPlanets() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { language } = useLanguage();
   const t = translations[language].projects;
@@ -27,8 +27,8 @@ export default function ProjectPlanets() {
       ],
       liveDemoUrl:
         language === 'es'
-          ? 'https://www.youtube.com/watch?v=gW02KDvc4EY&t=33s'
-          : 'https://www.youtube.com/watch?v=sLZwWSGQgBA',
+          ? 'https://gymmaster.com.ar/es'
+          : 'https://gymmaster.com.ar/en',
       sourceCodeUrl: 'https://github.com/GFGaldeano',
       metrics: {
         clients: '50+',
@@ -78,8 +78,13 @@ export default function ProjectPlanets() {
     }
   ];
 
+  const selectedProject =
+
+    projects.find((project) => project.id === selectedProjectId) || null;
+
+
   const handleProjectSelect = (project) => {
-    setSelectedProject(project);
+    setSelectedProjectId(project.id);
     setCurrentImageIndex(0);
   };
 
